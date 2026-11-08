@@ -1,0 +1,58 @@
+---
+layout: layouts/base.njk
+trackEvent: product_view
+---
+<div class="wrap">{% include "partials/breadcrumbs.njk" %}</div>
+<article class="product wrap">
+  <div class="product-top">
+    <div class="product-visual">
+      {%- if image %}
+      <img src="{{ image }}" alt="{{ imageAlt }}" width="900" height="1100">
+      {%- else %}
+      <div class="product-cover cover-{{ coverStyle or 'blush' }}" aria-hidden="true">
+        <span class="ebook-brand">{{ site.name }}</span>
+        <span class="ebook-title">{{ title }}</span>
+      </div>
+      {%- endif %}
+    </div>
+    <div class="product-summary">
+      <p class="status status-{{ status }}">{% if status == "available" %}Available now{% else %}Coming soon{% endif %}</p>
+      <h1>{{ title }}</h1>
+      <p class="lede">{{ summary }}</p>
+      <p class="price">{% if status == "available" %}${{ price }}{% else %}Planned price: ${{ price }}{% endif %} <span class="price-note">USD, digital download</span></p>
+      {%- if status == "available" and checkoutUrl %}
+      <a class="btn btn-block" href="{{ checkoutUrl }}" data-checkout data-product="{{ title }}" data-price="{{ price }}">Buy now, ${{ price }}</a>
+      {%- else %}
+      <p class="soon-note">This resource isn’t on sale yet. Join the newsletter to hear when it launches.</p>
+      {% set formId = "product-" + page.fileSlug %}{% include "partials/newsletter-form.njk" %}
+      {%- endif %}
+    </div>
+  </div>
+
+  <div class="product-details wrap-narrow">
+    <div class="prose">{{ content | safe }}</div>
+
+    <h2>What’s included</h2>
+    <ul class="check-list">
+      {%- for item in includes %}<li>{{ item }}</li>{% endfor %}
+    </ul>
+
+    <h2>Who it’s for</h2>
+    <p>{{ audience }}</p>
+
+    <h2>Digital delivery</h2>
+    <p>{{ delivery }}</p>
+
+    <h2>Refunds</h2>
+    <p>{{ refundSummary }} Full details are in our <a href="/refund-policy/">refund policy</a>.</p>
+
+    {%- if faqs and faqs.length %}
+    <h2>Questions</h2>
+    <div class="faqs">
+      {%- for f in faqs %}
+      <details><summary>{{ f.q }}</summary><p>{{ f.a }}</p></details>
+      {%- endfor %}
+    </div>
+    {%- endif %}
+  </div>
+</article>

@@ -1,0 +1,9 @@
+---
+layout: layouts/base.njk
+---
+<div class="wrap">{% include "partials/breadcrumbs.njk" %}</div>
+<article class="page-body wrap-narrow">
+  <h1>{{ title }}</h1>
+  {%- if intro %}<p class="lede">{{ intro }}</p>{% endif %}
+  <div class="prose">{{ content | safe }}</div>
+</article>

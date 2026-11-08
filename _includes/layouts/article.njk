@@ -1,0 +1,29 @@
+---
+layout: layouts/base.njk
+isArticle: true
+---
+<div class="wrap">{% include "partials/breadcrumbs.njk" %}</div>
+<article class="article">
+  <header class="article-head wrap-narrow">
+    <h1>{{ title }}</h1>
+    <p class="lede">{{ excerpt }}</p>
+    <p class="article-meta">By <a href="/about/">{{ site.founder }}</a>, <time datetime="{{ date | isoDate }}">{{ date | ukDate }}</time>, {{ content | readingTime }}</p>
+  </header>
+  {%- if image %}
+  <figure class="article-hero wrap"><img src="{{ image }}" alt="{{ imageAlt }}" width="1600" height="900"></figure>
+  {%- endif %}
+  <div class="prose wrap-narrow">{{ content | safe }}</div>
+  <aside class="article-signup wrap-narrow" aria-labelledby="as-{{ page.fileSlug }}">
+    <h2 id="as-{{ page.fileSlug }}">New to all of this?</h2>
+    <p>Get <em>Your First Steps Into High-Ticket Closing</em>, a free beginner’s guide to the terminology, the process and practical first steps.</p>
+    {% set formId = "article-" + page.fileSlug %}{% include "partials/guide-form.njk" %}
+  </aside>
+  {%- set related = [] %}
+  {%- for post in collections.journal %}{% if post.url != page.url and related.length < 2 %}{% set related = (related.push(post), related) %}{% endif %}{% endfor %}
+  <section class="related wrap" aria-labelledby="related-h">
+    <h2 id="related-h">Keep reading</h2>
+    <div class="card-grid card-grid-2">
+      {%- for post in related %}{% include "partials/article-card.njk" %}{% endfor %}
+    </div>
+  </section>
+</article>

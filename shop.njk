@@ -1,0 +1,27 @@
+---
+layout: layouts/base.njk
+title: The Shop
+seoTitle: "The Shop: Digital Resources for Aspiring Closers"
+description: "Downloadable workbooks, templates and toolkits for women preparing for their first high-ticket closing role."
+breadcrumbs: [{ name: "The Shop", url: "/shop/" }]
+---
+<div class="wrap">{% include "partials/breadcrumbs.njk" %}</div>
+<div class="page-body wrap">
+  <h1>The shop</h1>
+  <p class="lede narrow">Practical workbooks, scripts and resources designed to help aspiring closers prepare, practise and build confidence.</p>
+  <div class="product-row">
+    {%- for p in collections.shop %}
+    <a class="product-tile" href="{{ p.url }}">
+      <span class="status status-{{ p.data.status }}">{% if p.data.status == "available" %}Available now{% else %}Coming soon{% endif %}</span>
+      <span class="product-tile-title">{{ p.data.title }}</span>
+      <span class="product-tile-sum">{{ p.data.summary }}</span>
+      <span class="product-tile-price">{% if p.data.status == "available" %}${{ p.data.price }}{% else %}Planned price ${{ p.data.price }}{% endif %}</span>
+    </a>
+    {%- endfor %}
+  </div>
+  <div class="callout narrow">
+    <h2>Hear when they launch</h2>
+    <p>Subscribers are the first to know when a new resource is ready.</p>
+    {% set formId = "shop" %}{% include "partials/newsletter-form.njk" %}
+  </div>
+</div>

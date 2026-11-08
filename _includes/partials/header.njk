@@ -1,0 +1,24 @@
+{%- set nav = [
+  { label: "Home", url: "/" },
+  { label: "Start Here", url: "/start-here/" },
+  { label: "Learn", url: "/learn/" },
+  { label: "Free Resources", url: "/free-resources/" },
+  { label: "The Shop", url: "/shop/" },
+  { label: "About", url: "/about/" }
+] %}
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="wordmark" href="/" aria-label="{{ site.name }}, home">{{ site.name }}</a>
+    <nav class="main-nav" id="main-nav" aria-label="Main">
+      <ul>
+        {%- for item in nav %}
+        <li><a href="{{ item.url }}"{% if page.url == item.url or (item.url != '/' and page.url.startsWith(item.url)) %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+        {%- endfor %}
+      </ul>
+    </nav>
+    <a class="btn btn-small header-cta" href="/free-high-ticket-closing-guide/"><span class="cta-long">Get the free guide</span><span class="cta-short">Free guide</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+      <span class="menu-toggle-bars" aria-hidden="true"></span><span class="visually-hidden">Menu</span>
+    </button>
+  </div>
+</header>

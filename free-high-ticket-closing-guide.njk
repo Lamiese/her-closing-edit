@@ -1,0 +1,34 @@
+---
+layout: layouts/base.njk
+title: Your First Steps Into High-Ticket Closing
+seoTitle: "Free Beginner’s Guide to High-Ticket Closing"
+description: "Get Your First Steps Into High-Ticket Closing, a free beginner’s guide to remote high-ticket sales: the terminology, the process and practical first steps."
+permalink: /free-high-ticket-closing-guide/
+breadcrumbs: [{ name: "Free Resources", url: "/free-resources/" }, { name: "Free Beginner’s Guide", url: "/free-high-ticket-closing-guide/" }]
+---
+<div class="wrap">{% include "partials/breadcrumbs.njk" %}</div>
+<section class="guide-landing wrap">
+  <div class="guide-landing-grid">
+    <div class="guide-landing-visual">
+      {% include "partials/ebook.njk" %}
+      <p class="price-free">Free</p>
+    </div>
+    <div>
+      <h1>Your First Steps Into High-Ticket Closing</h1>
+      <p class="lede">A free beginner-friendly introduction to the world of remote high-ticket sales.</p>
+      {%- if site.guide.status != "live" %}
+      <p class="status status-coming-soon">Launching soon</p>
+      <p>The guide is being finished now. Leave your email and it will be sent to you as soon as it’s ready.</p>
+      {%- endif %}
+      <h2 class="h3">Inside, you’ll learn</h2>
+      <ul class="check-list">
+        <li>The key terms, from “discovery call” to “show rate”, explained simply</li>
+        <li>How a remote high-ticket sales process works from first contact to decision</li>
+        <li>The difference between closing and appointment setting</li>
+        <li>How commission is usually structured, without hype</li>
+        <li>Practical first steps you can take this week</li>
+      </ul>
+      {% set formId = "landing" %}{% include "partials/guide-form.njk" %}
+    </div>
+  </div>
+</section>

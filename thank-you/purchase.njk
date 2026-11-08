@@ -1,0 +1,18 @@
+---
+layout: layouts/base.njk
+title: Thank you for your order
+description: "Thank you for your order."
+permalink: /thank-you/purchase/
+noindex: true
+---
+<div class="page-body wrap-narrow center">
+  <h1>Thank you for your order.</h1>
+  <p class="lede">Your download link is sent to the email address you used at checkout. If it hasn’t arrived within an hour, check your spam folder or <a href="/contact/">contact us</a>.</p>
+</div>
+<script>
+  // Fires only when the payment provider redirects here with a completed session id.
+  document.addEventListener("DOMContentLoaded", function () {
+    var q = new URLSearchParams(location.search);
+    if (q.get("session_id") && window.tceTrack) window.tceTrack("purchase", { transaction_id: q.get("session_id"), item_name: q.get("product") || "" });
+  });
+</script>

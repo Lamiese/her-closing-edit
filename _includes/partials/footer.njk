@@ -1,0 +1,43 @@
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <a class="wordmark wordmark-light" href="/">{{ site.name }}</a>
+      <p>{{ site.tagline }} {{ site.statement }}</p>
+      <p class="footer-small">Educational content and resources. Not a recruitment agency or job placement service, and no earnings are promised.</p>
+    </div>
+    <div class="footer-links">
+      <h2 class="footer-heading">{{ site.name }}</h2>
+      <ul>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/learn/">The Journal</a></li>
+        <li><a href="/shop/">The Shop</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h2 class="footer-heading">The small print</h2>
+      <ul>
+        <li><a href="/privacy-policy/">Privacy Policy</a></li>
+        <li><a href="/terms-and-conditions/">Terms &amp; Conditions</a></li>
+        <li><a href="/refund-policy/">Refund Policy</a></li>
+        <li><a href="/disclaimer/">Disclaimer</a></li>
+        <li><button type="button" class="link-button" data-open-consent>Cookie settings</button></li>
+      </ul>
+    </div>
+    <div class="footer-signup">
+      <h2 class="footer-heading">The newsletter</h2>
+      <p>Beginner-friendly sales insights, now and then.</p>
+      {% set formId = "footer" %}{% include "partials/newsletter-form.njk" %}
+      {%- set hasSocial = site.social.instagram or site.social.tiktok or site.social.linkedin or site.social.youtube %}
+      {%- if hasSocial %}
+      <ul class="social">
+        {%- if site.social.instagram %}<li><a href="{{ site.social.instagram }}" rel="me noopener">Instagram</a></li>{% endif %}
+        {%- if site.social.tiktok %}<li><a href="{{ site.social.tiktok }}" rel="me noopener">TikTok</a></li>{% endif %}
+        {%- if site.social.linkedin %}<li><a href="{{ site.social.linkedin }}" rel="me noopener">LinkedIn</a></li>{% endif %}
+        {%- if site.social.youtube %}<li><a href="{{ site.social.youtube }}" rel="me noopener">YouTube</a></li>{% endif %}
+      </ul>
+      {%- endif %}
+    </div>
+  </div>
+  <div class="wrap footer-base">© <span data-year>2026</span> {{ site.name }}</div>
+</footer>
