@@ -1,0 +1,17 @@
+---
+layout: layouts/base.njk
+title: Thank you
+description: "Thank you for requesting the free guide."
+permalink: /thank-you/free-guide/
+noindex: true
+trackEvent: free_guide_signup
+---
+<div class="page-body wrap-narrow center">
+  <h1>Thank you, you’re on the list.</h1>
+  {%- if site.guide.status == "live" and site.guide.emailServiceConnected %}
+  <p class="lede">Your guide is on its way. Check your inbox in the next few minutes, and your spam or promotions folder if it hasn’t arrived.</p>
+  {%- else %}
+  <p class="lede">We’ve received your request. The guide is still being finished, and we’ll email it to you as soon as it’s ready.</p>
+  {%- endif %}
+  <p>While you wait, the <a href="/start-here/">beginner’s reading path</a> is a good place to start.</p>
+</div>

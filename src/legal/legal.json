@@ -1,0 +1,7 @@
+{
+  "layout": "layouts/page.njk",
+  "permalink": "/{{ page.fileSlug }}/",
+  "eleventyComputed": {
+    "breadcrumbs": [{ "name": "{{ title }}", "url": "/{{ page.fileSlug }}/" }]
+  }
+}

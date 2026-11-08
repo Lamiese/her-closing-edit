@@ -1,0 +1,19 @@
+<form class="guide-form" name="free-guide" method="POST" action="/thank-you/free-guide/" data-netlify="true" netlify-honeypot="bot-field">
+  <input type="hidden" name="form-name" value="free-guide">
+  <input type="hidden" name="source" value="{{ formId }}">
+  <p class="visually-hidden"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+  <div class="field">
+    <label for="g-name-{{ formId }}">First name <span class="optional">(optional)</span></label>
+    <input id="g-name-{{ formId }}" type="text" name="first-name" autocomplete="given-name">
+  </div>
+  <div class="field">
+    <label for="g-email-{{ formId }}">Email address</label>
+    <input id="g-email-{{ formId }}" type="email" name="email" required autocomplete="email">
+  </div>
+  <div class="field checkbox">
+    <input id="g-consent-{{ formId }}" type="checkbox" name="marketing-consent" value="yes">
+    <label for="g-consent-{{ formId }}">I’d also like to receive the newsletter with sales insights and news about new resources. I can unsubscribe at any time.</label>
+  </div>
+  <button class="btn btn-block" type="submit">{% if site.guide.status == "live" %}Send me the free guide{% else %}Send me the guide when it’s ready{% endif %}</button>
+  <p class="form-note">We’ll use your email to {% if site.guide.status == "live" %}send you the guide{% else %}send you the guide when it launches{% endif %}. Newsletter emails are only sent if you tick the box. See our <a href="/privacy-policy/">privacy policy</a>.</p>
+</form>

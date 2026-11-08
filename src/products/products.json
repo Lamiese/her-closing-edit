@@ -1,0 +1,11 @@
+{
+  "layout": "layouts/product.njk",
+  "permalink": "/shop/{{ page.fileSlug }}/",
+  "eleventyComputed": {
+    "breadcrumbs": [
+      { "name": "The Shop", "url": "/shop/" },
+      { "name": "{{ title }}", "url": "/shop/{{ page.fileSlug }}/" }
+    ],
+    "trackParams": { "item_name": "{{ title }}", "price": "{{ price }}" }
+  }
+}

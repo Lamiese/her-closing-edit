@@ -1,0 +1,137 @@
+---
+layout: layouts/base.njk
+description: "A beginner-friendly guide to high-ticket closing and remote sales for women. Learn how closing works, how commission is paid and how to take your first steps."
+bodyClass: home
+---
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <h1>Your Journey Into High-Ticket Sales Starts Here.</h1>
+      <p class="hero-lede">Curious about becoming a high-ticket closer but don’t know where to begin?</p>
+      <p>Discover how remote closing works, learn the foundations of consultative selling and take your first steps into a new career path with practical, beginner-friendly resources.</p>
+      <div class="btn-row">
+        <a class="btn" href="/free-high-ticket-closing-guide/">Get your free beginner’s guide</a>
+        <a class="btn btn-ghost" href="/what-is-high-ticket-closing/">Explore high-ticket closing</a>
+      </div>
+    </div>
+    <div class="hero-cover" aria-hidden="true">
+      <div class="cover-sheet">
+        <span class="cover-mast">{{ site.name }}</span>
+        <span class="cover-issue">The beginner’s issue</span>
+        <span class="cover-line cover-line-lg">The art of closing</span>
+        <span class="cover-line">What a closer actually does</span>
+        <span class="cover-line">Commission, explained honestly</span>
+        <span class="cover-line">Your first role-play</span>
+        <span class="cover-foot">{{ site.statement }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{%- if home.featureImage and home.featureImage.src %}
+<section class="feature-image">
+  <div class="wrap">
+    <picture>
+      {%- if home.featureImage.webp %}<source srcset="{{ home.featureImage.webp }}" type="image/webp">{% endif %}
+      <img src="{{ home.featureImage.src }}" alt="{{ home.featureImage.alt }}" width="{{ home.featureImage.width }}" height="{{ home.featureImage.height }}" loading="lazy" decoding="async">
+    </picture>
+  </div>
+</section>
+{%- endif %}
+
+<section class="section intro-split">
+  <div class="wrap split">
+    <h2>What is high-ticket closing?</h2>
+    <div>
+      <p>High-ticket closing is the part of the sales process where a trained salesperson, the closer, speaks with a prospective customer who is considering a higher-priced product or service. Think coaching programmes, courses, consultancy or premium services.</p>
+      <p>A good closer isn’t there to pressure anyone. Their job is to understand what the person wants, help them weigh up whether the offer is genuinely right for them and guide them to a clear, informed decision. Much of this work now happens remotely, over video calls.</p>
+      <a class="text-link" href="/what-is-high-ticket-closing/">Learn how it works</a>
+    </div>
+  </div>
+</section>
+
+<section class="section steps">
+  <div class="wrap">
+    <h2 class="section-title">Your starting point</h2>
+    <ol class="step-grid">
+      <li class="step">
+        <span class="step-num" aria-hidden="true">01</span>
+        <h3><a href="/what-is-high-ticket-closing/">Understand the industry</a></h3>
+        <p>Learn what closers do, how sales calls work and what the terminology means.</p>
+      </li>
+      <li class="step">
+        <span class="step-num" aria-hidden="true">02</span>
+        <h3><a href="/how-to-become-a-high-ticket-closer/">Build your foundations</a></h3>
+        <p>Explore communication, discovery questions, listening and consultative sales techniques.</p>
+      </li>
+      <li class="step">
+        <span class="step-num" aria-hidden="true">03</span>
+        <h3><a href="/how-to-find-high-ticket-closing-jobs/">Prepare for opportunities</a></h3>
+        <p>Understand applications, interviews, role-plays and how to evaluate potential closing roles.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section guide-band">
+  <div class="wrap guide-grid">
+    {% include "partials/ebook.njk" %}
+    <div>
+      <h2>Your First Steps Into High-Ticket Closing</h2>
+      <p class="lede">A free beginner-friendly introduction to the world of remote high-ticket sales.</p>
+      <p>Learn the terminology, understand the process and discover practical first steps.</p>
+      <a class="btn" href="/free-high-ticket-closing-guide/">Download your free guide</a>
+    </div>
+  </div>
+</section>
+
+<section class="section journal-preview">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="section-title">From the journal</h2>
+      <a class="text-link" href="/learn/">All articles</a>
+    </div>
+    <div class="card-grid">
+      {%- for slug in home.featuredArticles %}
+        {%- for post in collections.journal %}{% if post.fileSlug == slug %}{% include "partials/article-card.njk" %}{% endif %}{% endfor %}
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section shop-preview">
+  <div class="wrap">
+    <h2 class="section-title">Tools for your next chapter.</h2>
+    <p class="section-lede">Practical workbooks, scripts and resources designed to help aspiring closers prepare, practise and build confidence.</p>
+    <div class="product-row">
+      {%- for p in collections.shop %}
+      <a class="product-tile" href="{{ p.url }}">
+        <span class="status status-{{ p.data.status }}">{% if p.data.status == "available" %}Available now{% else %}Coming soon{% endif %}</span>
+        <span class="product-tile-title">{{ p.data.title }}</span>
+        <span class="product-tile-sum">{{ p.data.summary }}</span>
+        <span class="product-tile-price">{% if p.data.status == "available" %}${{ p.data.price }}{% else %}Planned price ${{ p.data.price }}{% endif %}</span>
+      </a>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section about-preview">
+  <div class="wrap split split-media">
+    <div class="founder-photo" role="img" aria-label="Founder photograph to be added"><span>Photograph of {{ site.founder }} coming soon</span></div>
+    <div>
+      <h2>Hello, I’m {{ site.founder }}.</h2>
+      <p>I spent ten years in the Metropolitan Police, including specialist interviewing training, then built a six-figure hair extension brand from scratch. Along the way I negotiated and closed high-value deals and supported sales teams.</p>
+      <p>Now I’m making my own move into remote high-ticket closing, and Her Closing Edit is where I share what I’m learning, plainly and honestly, for women starting where I did.</p>
+      <a class="text-link" href="/about/">Read my story</a>
+    </div>
+  </div>
+</section>
+
+<section class="section newsletter-band">
+  <div class="wrap-narrow center">
+    <h2>A little more confidence in your inbox.</h2>
+    <p>Beginner-friendly sales insights, useful resources and practical advice for women exploring high-ticket closing.</p>
+    {% set formId = "home" %}{% include "partials/newsletter-form.njk" %}
+  </div>
+</section>

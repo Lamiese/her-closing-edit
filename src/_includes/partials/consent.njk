@@ -1,0 +1,9 @@
+{%- if site.ga4Id %}
+<div class="consent" id="consent" hidden role="dialog" aria-label="Cookie preferences">
+  <p>We’d like to use analytics cookies to understand which articles are helpful. They’re only set if you accept.</p>
+  <div class="consent-actions">
+    <button class="btn btn-small" type="button" data-consent="granted">Accept analytics</button>
+    <button class="btn btn-small btn-ghost" type="button" data-consent="denied">Decline</button>
+  </div>
+</div>
+{%- endif %}

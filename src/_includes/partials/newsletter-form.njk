@@ -1,0 +1,11 @@
+<form class="signup-form" name="newsletter" method="POST" action="/thank-you/newsletter/" data-netlify="true" netlify-honeypot="bot-field">
+  <input type="hidden" name="form-name" value="newsletter">
+  <input type="hidden" name="source" value="{{ formId }}">
+  <p class="visually-hidden"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+  <div class="field-row">
+    <label class="visually-hidden" for="nl-email-{{ formId }}">Email address</label>
+    <input id="nl-email-{{ formId }}" type="email" name="email" required autocomplete="email" placeholder="Your email address">
+    <button class="btn" type="submit">Subscribe</button>
+  </div>
+  <p class="form-note">By subscribing you agree to receive our newsletter. Unsubscribe at any time. See our <a href="/privacy-policy/">privacy policy</a>.</p>
+</form>

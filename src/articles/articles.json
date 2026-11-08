@@ -1,0 +1,10 @@
+{
+  "layout": "layouts/article.njk",
+  "permalink": "/{{ page.fileSlug }}/",
+  "eleventyComputed": {
+    "breadcrumbs": [
+      { "name": "Learn", "url": "/learn/" },
+      { "name": "{{ shortTitle or title }}", "url": "/{{ page.fileSlug }}/" }
+    ]
+  }
+}

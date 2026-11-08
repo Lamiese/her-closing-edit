@@ -1,0 +1,15 @@
+---
+layout: layouts/base.njk
+title: Learn
+seoTitle: "The Journal: Beginner Guides to High-Ticket Closing"
+description: "Beginner-friendly articles on high-ticket closing, appointment setting, commission and finding your first remote sales role."
+breadcrumbs: [{ name: "Learn", url: "/learn/" }]
+---
+<div class="wrap">{% include "partials/breadcrumbs.njk" %}</div>
+<div class="wrap page-body">
+  <h1>The journal</h1>
+  <p class="lede narrow">Plain-English guides for women exploring high-ticket closing. No hype, no income promises, just how it works.</p>
+  <div class="card-grid">
+    {%- for post in collections.journal %}{% include "partials/article-card.njk" %}{% endfor %}
+  </div>
+</div>

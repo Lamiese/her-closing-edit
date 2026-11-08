@@ -1,0 +1,126 @@
+# Decap CMS: edit content at yoursite.com/admin/
+# Replace YOUR-GITHUB-USERNAME below with your GitHub username (see README, step 4).
+backend:
+  name: github
+  repo: YOUR-GITHUB-USERNAME/her-closing-edit
+  branch: main
+  base_url: https://api.netlify.com
+
+site_url: https://www.herclosingedit.com
+locale: en
+media_folder: src/assets/images
+public_folder: /assets/images
+
+collections:
+  - name: articles
+    label: Journal articles
+    label_singular: Article
+    folder: src/articles
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    summary: "{{title}}"
+    fields:
+      - { label: "Title (H1)", name: title, widget: string }
+      - { label: "Short title (breadcrumbs)", name: shortTitle, widget: string, required: false }
+      - { label: "SEO title (optional, overrides title in Google)", name: seoTitle, widget: string, required: false }
+      - { label: "Meta description (about 150 characters)", name: description, widget: text }
+      - { label: "Excerpt (shown on cards and under the title)", name: excerpt, widget: text }
+      - { label: "Card word (shown when there is no image)", name: cardWord, widget: string, required: false }
+      - { label: "Featured image", name: image, widget: image, required: false }
+      - { label: "Image description (alt text)", name: imageAlt, widget: string, required: false }
+      - { label: "Publish date", name: date, widget: datetime, date_format: "DD/MM/YYYY", time_format: false, format: "YYYY-MM-DD" }
+      - { label: "Last updated", name: updated, widget: datetime, date_format: "DD/MM/YYYY", time_format: false, format: "YYYY-MM-DD", required: false }
+      - { label: "Order in journal (1 = first)", name: order, widget: number, value_type: int, default: 10 }
+      - { label: "Hide from Google (draft)", name: noindex, widget: boolean, default: false, required: false }
+      - { label: "Body", name: body, widget: markdown }
+
+  - name: products
+    label: Shop products
+    label_singular: Product
+    folder: src/products
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: "SEO title", name: seoTitle, widget: string, required: false }
+      - { label: "Meta description", name: description, widget: text }
+      - { label: "Short summary", name: summary, widget: text }
+      - { label: "Price (USD)", name: price, widget: number, value_type: float }
+      - { label: Status, name: status, widget: select, options: [{ label: "Coming soon", value: "coming-soon" }, { label: "Available", value: "available" }], default: "coming-soon" }
+      - { label: "Checkout link (Stripe Payment Link). Only used when Available.", name: checkoutUrl, widget: string, required: false }
+      - { label: "Product image", name: image, widget: image, required: false }
+      - { label: "Image description (alt text)", name: imageAlt, widget: string, required: false }
+      - { label: "Cover style (if no image)", name: coverStyle, widget: select, options: ["blush", "espresso"], default: "blush" }
+      - { label: "Order in shop", name: order, widget: number, value_type: int, default: 10 }
+      - { label: "What’s included", name: includes, widget: list }
+      - { label: "Who it’s for", name: audience, widget: text }
+      - { label: "Digital delivery", name: delivery, widget: text }
+      - { label: "Refund summary", name: refundSummary, widget: text }
+      - label: FAQs
+        name: faqs
+        widget: list
+        required: false
+        fields:
+          - { label: Question, name: q, widget: string }
+          - { label: Answer, name: a, widget: text }
+      - { label: Description, name: body, widget: markdown }
+
+  - name: legal
+    label: Policy pages
+    folder: src/legal
+    create: false
+    extension: md
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: "Meta description", name: description, widget: text }
+      - { label: "Unfinished (hides from Google and shows a notice)", name: draft, widget: boolean, default: false, required: false }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: settings
+    label: Site settings
+    files:
+      - label: General settings
+        name: site
+        file: src/_data/site.json
+        fields:
+          - { label: "Site name", name: name, widget: string }
+          - { label: Tagline, name: tagline, widget: string }
+          - { label: Statement, name: statement, widget: string }
+          - { label: "Live website address (no trailing slash)", name: url, widget: string }
+          - { label: "Founder name", name: founder, widget: string }
+          - { label: "Contact email", name: contactEmail, widget: string, required: false }
+          - { label: "Google Analytics 4 ID (G-XXXXXXX)", name: ga4Id, widget: string, required: false }
+          - { label: "Google Search Console verification code", name: searchConsoleVerification, widget: string, required: false }
+          - label: Free guide
+            name: guide
+            widget: object
+            fields:
+              - { label: "Guide status", name: status, widget: select, options: [{ label: "Coming soon", value: "coming-soon" }, { label: "Live", value: "live" }] }
+              - { label: "Email delivery connected and tested", name: emailServiceConnected, widget: boolean }
+          - label: Social links
+            name: social
+            widget: object
+            fields:
+              - { label: Instagram, name: instagram, widget: string, required: false }
+              - { label: TikTok, name: tiktok, widget: string, required: false }
+              - { label: LinkedIn, name: linkedin, widget: string, required: false }
+              - { label: YouTube, name: youtube, widget: string, required: false }
+      - label: Homepage
+        name: home
+        file: src/_data/home.json
+        fields:
+          - label: "Featured articles (file names, e.g. what-is-high-ticket-closing)"
+            name: featuredArticles
+            widget: list
+          - label: "Homepage image (under the headline)"
+            name: featureImage
+            widget: object
+            required: false
+            fields:
+              - { label: "Image", name: src, widget: image }
+              - { label: "Fast version (leave empty if you replace the image)", name: webp, widget: string, required: false }
+              - { label: "Image description (alt text)", name: alt, widget: string }
+              - { label: "Width in pixels", name: width, widget: number }
+              - { label: "Height in pixels", name: height, widget: number }
